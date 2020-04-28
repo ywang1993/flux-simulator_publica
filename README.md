@@ -20,16 +20,16 @@
 Or, use pre-installed java.
 
 ### Pipeline
-- generate expression profile
+1. generate expression profile
 ```
 flux-simulator -p XX.par -x
 ```
-- modify expression profile (column 6)
-- generate library
+1. modify expression profile (column 6)
+1. generate library
 ```
 flux-simulator -p XX.par -l
 ```
-- get sequences
+1. get sequences
 ```
 flux-simulator -p XX.par -s
 ```
