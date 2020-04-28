@@ -25,6 +25,11 @@ Or, use pre-installed java.
   [Example parameter file](paraFiles/example_unmodified.PAR)
 - reference file `.GTF`
 - genome fasta by chromosome
+#### run as a whole process 
+flux-simulator -p XX.par
+
+#### run each step seperately
+This enable us to modify expression profile using real data, instead of using simulated expression profile.
 
 1. generate expression profile
 ```
