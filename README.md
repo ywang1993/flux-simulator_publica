@@ -9,7 +9,7 @@
 
 ### Mannual
 - Official [confluence website](http://confluence.sammeth.net/display/SIM/Home)
-- This is the [wiki for flux simulator](http://fluxcapacitor.wikidot.com/simulator)
+- [wiki for flux simulator](http://fluxcapacitor.wikidot.com/simulator)
 - For user-defined expression profiles, follow instructions [here](http://confluence.sammeth.net/display/SIM/flux+simulator+.pro+file).
 
 
@@ -20,6 +20,8 @@
 Or, use pre-installed java.
 
 ### Pipeline
+![Example parameter file](paraFiles/example_unmodified.PAR)
+
 1. generate expression profile
 ```
 flux-simulator -p XX.par -x
@@ -33,6 +35,7 @@ flux-simulator -p XX.par -l
 ```
 flux-simulator -p XX.par -s
 ```
+
 ### Contact
 Yuanyuan Wang <wyynju1993@gmail.com>
 
