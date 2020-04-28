@@ -24,12 +24,12 @@ Or, use pre-installed java.
 ```
 flux-simulator -p XX.par -x
 ```
-1. modify expression profile (column 6)
-1. generate library
+2. modify expression profile (column 6)
+3. generate library
 ```
 flux-simulator -p XX.par -l
 ```
-1. get sequences
+4. get sequences
 ```
 flux-simulator -p XX.par -s
 ```
