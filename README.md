@@ -20,11 +20,13 @@
 Or, use pre-installed java.
 
 ### Pipeline
-#### Input
+#### required input
 - parameter file `.PAR`
+
+[Example parameter file](paraFiles/example_unmodified.PAR)
+
 - reference file `.GTF`
 - genome fasta by chromosome
-#### [Example parameter file](paraFiles/example_unmodified.PAR)
 
 1. generate expression profile
 ```
