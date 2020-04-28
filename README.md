@@ -1,6 +1,7 @@
 # Flux-simulator pipeline
 ### Date: 04.28.2020
 
+
 ### Table of Contents
 - [Mannual](#Mannual)
 - [Installation](#Installation)
@@ -19,16 +20,21 @@
 
 Or, use pre-installed java.
 
+
+
 ### Pipeline
-#### required input
+#### Required input
 - parameter file `.PAR`
   [Example parameter file](paraFiles/example_unmodified.PAR)
 - reference file `.GTF`
 - genome fasta by chromosome
-#### run as a whole process 
+
+
+#### Run as a whole process 
 flux-simulator -p XX.par
 
-#### run each step seperately
+
+#### Run each step seperately
 This enable us to modify expression profile using real data, instead of using simulated expression profile.
 
 1. generate expression profile
@@ -44,6 +50,7 @@ flux-simulator -p XX.par -l
 ```
 flux-simulator -p XX.par -s
 ```
+
 
 ### Contact
 Yuanyuan Wang <wyynju1993@gmail.com>
