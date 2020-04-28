@@ -22,9 +22,7 @@ Or, use pre-installed java.
 ### Pipeline
 #### required input
 - parameter file `.PAR`
-
-[Example parameter file](paraFiles/example_unmodified.PAR)
-
+  [Example parameter file](paraFiles/example_unmodified.PAR)
 - reference file `.GTF`
 - genome fasta by chromosome
 
