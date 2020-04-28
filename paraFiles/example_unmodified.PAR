@@ -1,0 +1,38 @@
+### Reading Reference
+GEN_DIR ../reference/GRCh37_by_chrom/
+REF_FILE_NAME   ../reference/gencode.v31lift37.annotation.gtf
+
+### Expression
+NB_MOLECULES    30000000
+TSS_MEAN        50
+POLYA_SCALE     NaN
+POLYA_SHAPE     NaN
+PRO_FILE_NAME   ../profiles/count_modified.PRO
+
+### Library Construction
+#### fragmentation
+# FRAG_SUBSTRATE        RNA
+# FRAG_METHOD   UR
+# FRAG_UR_ETA   NaN
+# FRAG_UR_D0    1
+#### Reverse Transcription
+# RTRANSCRIPTION        true
+# RT_PRIMER     RH
+RT_LOSSLESS     YES
+# RT_MIN        500
+# RT_MAX        5500
+#### Filtering & Amplification
+FILTERING       true
+GC_MEAN NaN
+PCR_PROBABILITY 0.05
+# SIZE_DISTRIBUTION     cython_rMATS/frag_dist.txt      #Frag_dist.txt is a single-column text file storing the first 10000 fragment length.
+LIB_FILE_NAME   ../libraries/count_modified.LIB
+
+### sequencing
+READ_NUMBER     30000000
+READ_LENGTH     76
+PAIRED_END      true
+ERR_FILE        76
+FASTA   true
+UNIQUE_IDS      NO
+SEQ_FILE_NAME   ../fastq/30M.bed
