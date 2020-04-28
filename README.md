@@ -24,8 +24,7 @@ Or, use pre-installed java.
 - parameter file `.PAR`
 - reference file `.GTF`
 - genome fasta by chromosome
-
-[Example parameter file](paraFiles/example_unmodified.PAR)
+#### [Example parameter file](paraFiles/example_unmodified.PAR)
 
 1. generate expression profile
 ```
