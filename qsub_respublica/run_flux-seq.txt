@@ -1,0 +1,5 @@
+flux-simulator -p ../paraFiles/seq_10M.PAR -s
+flux-simulator -p ../paraFiles/seq_20M.PAR -s
+flux-simulator -p ../paraFiles/seq_30M.PAR -s
+flux-simulator -p ../paraFiles/seq_40M.PAR -s
+flux-simulator -p ../paraFiles/seq_50M.PAR -s
