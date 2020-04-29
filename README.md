@@ -4,7 +4,7 @@
 
 ### Table of Contents
 - [Mannual](#Mannual)
-- [Installation](#Installation)
+- [Install Softwares](#Install Softwares)
 - [Contact](#Contact)
 
 
@@ -14,12 +14,12 @@
 - For user-defined expression profiles, follow instructions [here](http://confluence.sammeth.net/display/SIM/flux+simulator+.pro+file).
 
 
-### Installation
+### Install Softwares
+#### flux simulator
 - Download and install [flux-simulator](http://confluence.sammeth.net/display/SIM/2+-+Download)
 - Install [JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
-
 Or, use pre-installed java.
-
+#### rmats
 
 
 ### Pipeline
@@ -31,19 +31,27 @@ Or, use pre-installed java.
 
 
 #### Run as a whole process 
-`flux-simulator -p XX.par`
+```
+flux-simulator -p XX.par
+```
 
 
 #### Run each step seperately
 This enable us to modify expression profile using real data, instead of using simulated expression profile.
 
 1. generate expression profile
-`flux-simulator -p XX.par -x`
+    ```
+    flux-simulator -p XX.par -x
+    ```
 2. modify expression profile (column 6)
 3. generate library
-`flux-simulator -p XX.par -l`
+    ```
+    flux-simulator -p XX.par -l
+    ```
 4. get sequences
-`flux-simulator -p XX.par -s`
+    ```
+    flux-simulator -p XX.par -s
+    ```
 
 
 ### Contact
