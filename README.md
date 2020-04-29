@@ -28,30 +28,32 @@
 ### Flux Simulator
 #### Required input
 - parameter file `.PAR`
-  [Example parameter file](paraFiles/example_unmodified.PAR)
+    [Example parameter file](paraFiles/example_unmodified.PAR)
 - reference file `.GTF`
 - genome fasta by chromosome
 
 
 #### Run as a whole process 
+Example parameter file [example_unmodified.PAR](paraFiles/example_unmodified.PAR)
 ```
 flux-simulator -p XX.par
 ```
 
 
 #### Run each step seperately
-This enable us to modify expression profile using real data, instead of using simulated expression profile.
+*This enable us to modify expression profile using real data*, instead of using simulated expression profile.
 
-1. generate expression profile
+1. generate expression profile by [expression.PAR](./paraFiles/expression.PAR)
     ```
     flux-simulator -p XX.par -x
     ```
-2. modify expression profile (column 6)
-3. generate library
+2. Optional: modify expression profile (column 6).
+    Expression profile column 6 represent the number of initial molecules. It can be replaced by counts from real data, for example, kallisto output `abundance.tsv` (column 4).
+3. generate library by [lib.PAR](./paraFiles/lib.PAR)
     ```
     flux-simulator -p XX.par -l
     ```
-4. get sequences
+4. get sequences by [seq_50M.PAR](./paraFiles/seq_50M.PAR)
     ```
     flux-simulator -p XX.par -s
     ```
