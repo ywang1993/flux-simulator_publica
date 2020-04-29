@@ -1,0 +1,12 @@
+
+### Reading Reference
+GEN_DIR	../reference/GRCh37_by_chrom/
+REF_FILE_NAME	../reference/gencode.v31lift37.annotation.gtf
+
+### Expression
+PRO_FILE_NAME	../profiles/count_30M.PRO
+NB_MOLECULES	30000000
+TSS_MEAN	50
+POLYA_SCALE	NaN
+POLYA_SHAPE	NaN
+

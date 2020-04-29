@@ -1,0 +1,12 @@
+
+GEN_DIR	../reference/GRCh37_by_chrom/
+REF_FILE_NAME	../reference/gencode.v31lift37.annotation.gtf
+LIB_FILE_NAME	../libraries/count_modified.LIB
+READ_LENGTH	76
+PAIRED_END	true
+ERR_FILE	76
+FASTA	true
+UNIQUE_IDS	NO
+READ_NUMBER	40000000
+SEQ_FILE_NAME	../fastq/20M.bed
+
