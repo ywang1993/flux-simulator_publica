@@ -30,9 +30,9 @@
 ## Pipeline
 ### Flux Simulator
 #### Required input
-- parameter file `.PAR`
-    [Example .PAR 1](paraFiles/example_unmodified.PAR)
-    [Example .PAR 2](paraFiles/example_from_NBT.PAR) used in [Sailfish](https://www.nature.com/articles/nbt.2862) paper
+- parameter file `.PAR` \
+    [example 1 .PAR](paraFiles/example_unmodified.PAR) \
+    [example 2 .PAR](paraFiles/example_from_NBT.PAR) used in [Sailfish](https://www.nature.com/articles/nbt.2862) paper
 - reference file `.GTF`
 - genome fasta by chromosome
 
