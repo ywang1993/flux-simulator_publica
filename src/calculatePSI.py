@@ -435,10 +435,16 @@ def detectMXE(rmats, gene_struct):
                     elif (exon[0] == x.ndExonStart_0base + 1) and (exon[1] == x.ndExonEnd):
                         aexon = idx
                 # determine inc or skp
-                if (left > -1) and (right > -1) and (texon > -1) and (right - texon == 1) and (texon - left == 1):
+                if (left == -1) or (right == -1):
+                    continue
+                if (texon > -1) and (right - texon == 1) and (texon - left == 1):
                     MXE[x.uniqID]["inc"].append(tx)
-                elif (left > -1) and (right > -1) and (aexon > -1) and (right - aexon == 1) and (aexon - left == 1):
+                elif (aexon > -1) and (right - aexon == 1) and (aexon - left == 1):
                     MXE[x.uniqID]["skp"].append(tx)
+
+            if x.strand == "-":
+                MXE[x.uniqID]["inc"], MXE[x.uniqID]["skp"] = MXE[x.uniqID]["skp"], MXE[x.uniqID]["inc"]
+
     return MXE
 
 
@@ -460,40 +466,39 @@ def detectAXSS(rmats, gene_struct):
                     continue
                 # initiation
                 flank = -1
-                long = -1
-                short = -1
+                elong = -1
+                eshort = -1
                 # locate AXSS exons
                 for idx in range(len(gene_struct[x.GeneID]["TX"][tx])):
                     exon = gene_struct[x.GeneID]["TX"][tx][idx]
                     if x.flankingEE <= x.longExonStart_0base:
                         if exon[1] == x.flankingEE:
                             flank = idx
-                        elif exon[0] == x.longExonStart_0base:
-                            long = idx
-                        elif exon[0] == x.shortES:
-                            short = idx
+                        elif exon[0] == (x.longExonStart_0base + 1):
+                            elong = idx
+                        elif exon[0] == (x.shortES + 1):
+                            eshort = idx
                     elif x.flankingES >= x.longExonEnd:
-                        if exon[0] == x.flankingES:
+                        if exon[0] == (x.flankingES + 1):
                             flank = idx
                         elif exon[1] == x.longExonEnd:
-                            long = idx
+                            elong = idx
                         elif exon[1] == x.shortES:
-                            short = idx
+                            eshort = idx
                     else:
                         sys.exit("Error: " + rmats + ", line\n\t", line)
 
                 # determine inc or skp
                 if x.flankingEE <= x.longExonStart_0base:
-                    if (flank > -1) and (long > -1) and (long - flank == 1):
+                    if (flank > -1) and (elong > -1) and (elong - flank == 1):
                         AXSS[x.uniqID]["inc"].append(tx)
-                    elif (flank > -1) and (short > -1) and (short - flank == 1):
+                    elif (flank > -1) and (eshort > -1) and (eshort - flank == 1):
                         AXSS[x.uniqID]["skp"].append(tx)
                 elif x.flankingES >= x.longExonEnd:
-                    if (flank > -1) and (long > -1) and (long - flank == -1):
+                    if (flank > -1) and (elong > -1) and (elong - flank == -1):
                         AXSS[x.uniqID]["inc"].append(tx)
-                    elif (flank > -1) and (short > -1) and (short - flank == -11):
+                    elif (flank > -1) and (eshort > -1) and (eshort - flank == -11):
                         AXSS[x.uniqID]["skp"].append(tx)
-
     return AXSS
 
 
@@ -552,11 +557,11 @@ def main():
 
     args = get_args()
 
-    xGENE, xCOUNT = parse_pro(args.fn_gtf, args.fn_pro)
+    xgene_struct, xcount_gene_tx = parse_pro(args.fn_gtf, args.fn_pro)
 
     for idx in range(len(args.fn_rmats)):
-        xAS = detectAS(args.fn_rmats[idx], xGENE)
-        xAS_COUNT, xPSI = CalculatePSI(xAS, xCOUNT)
+        xAS = detectAS(args.fn_rmats[idx], xgene_struct)
+        xAS_COUNT, xPSI = CalculatePSI(xAS, xcount_gene_tx)
 
         with open(args.fn_psi[idx], "w") as fo:
             fo.write("ID\tPSI\tcount\n")
