@@ -51,8 +51,8 @@ flux-simulator -p XX.par
     ```
     flux-simulator -p XX.par -x
     ```
-2. Optional: modify expression profile (column 6) to [count_modified.PRO](./profiles/count_modified.PRO). Expression profile **column 6** represent the number of initial molecules. It can be replaced by counts from real data (e.g. TPM, normalized by transcript length). <br><br>
-    **my example**: column 6 replaced by TPM<sub>kallisto</sub>*50 from real data (293 T cell line)
+2. Optional: modify expression profile (column 6) to [count_modified.PRO](./profiles/count_modified.PRO). Expression profile **column 6** represent the number of initial molecules. It can be replaced by counts from real data (e.g. TPM, normalized by transcript length). 
+   - **my example**: column 6 replaced by TPM<sub>kallisto</sub>*50 from real data (293 T cell line)
 
 3. generate library [count_modified.LIB](./libraries/count_modified.LIB) by [lib.PAR](./paraFiles/lib.PAR) 
     ```
