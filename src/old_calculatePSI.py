@@ -53,6 +53,7 @@ def get_args():
 
 class GTF(object):
     def __init__(self, line):
+        self.line = line
         (
             self.seqname,
             self.source,
@@ -80,11 +81,12 @@ class GTF(object):
         )
 
     def __str__(self):
-        return self.line
+        return str(self.line)
 
 
 class fromGTF_SE(object):
     def __init__(self, line):
+        self.line = line
         self.line_list = line.replace('"', "").strip().split("\t")
         (
             self.ID,
@@ -116,11 +118,12 @@ class fromGTF_SE(object):
         return
 
     def __str__(self):
-        return str(line)
+        return str(self.line)
 
 
 class fromGTF_RI(object):
     def __init__(self, line):
+        self.line = line
         self.line_list = line.replace('"', "").strip().split("\t")
         (
             self.ID,
@@ -152,11 +155,12 @@ class fromGTF_RI(object):
         return
 
     def __str__(self):
-        return str(line)
+        return str(self.line)
 
 
 class fromGTF_AXSS(object):
     def __init__(self, line):
+        self.line = line
         self.line_list = line.replace('"', "").strip().split("\t")
         (
             self.ID,
@@ -202,11 +206,12 @@ class fromGTF_AXSS(object):
         return
 
     def __str__(self):
-        return str(line)
+        return str(self.line)
 
 
 class fromGTF_MXE(object):
     def __init__(self, line):
+        self.line = line
         self.line_list = line.replace('"', "").strip().split("\t")
         (
             self.ID,
@@ -251,7 +256,7 @@ class fromGTF_MXE(object):
         return
 
     def __str__(self):
-        return str(line)
+        return str(self.line)
 
 
 def parse_pro(gtf, pro):
@@ -329,7 +334,7 @@ def parse_pro(gtf, pro):
     return gene_struct, count_gene_tx
 
 
-def detectSE(rmats, gene_struct):
+def count_SE(rmats, gene_struct):
     SE = {}
     with open(rmats, "r") as fin:
         fin.readline()
@@ -371,7 +376,7 @@ def detectSE(rmats, gene_struct):
     return SE
 
 
-def detectRI(rmats, gene_struct):
+def count_RI(rmats, gene_struct):
     RI = {}
     with open(rmats, "r") as fin:
         fin.readline()
@@ -405,7 +410,7 @@ def detectRI(rmats, gene_struct):
     return RI
 
 
-def detectMXE(rmats, gene_struct):
+def count_MXE(rmats, gene_struct):
     MXE = {}
     with open(rmats, "r") as fin:
         fin.readline()
@@ -448,7 +453,7 @@ def detectMXE(rmats, gene_struct):
     return MXE
 
 
-def detectAXSS(rmats, gene_struct):
+def count_AXSS(rmats, gene_struct):
     AXSS = {}
     with open(rmats, "r") as fin:
         fin.readline()
@@ -502,16 +507,16 @@ def detectAXSS(rmats, gene_struct):
     return AXSS
 
 
-def detectAS(rmats, gene_struct):
+def count_AS(rmats, gene_struct):
     print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "start: detecting AS", rmats)
     if "SE" in rmats:
-        AS = detectSE(rmats, gene_struct)
+        AS = count_SE(rmats, gene_struct)
     elif "RI" in rmats:
-        AS = detectRI(rmats, gene_struct)
+        AS = count_RI(rmats, gene_struct)
     elif "A3SS" in rmats or "A5SS" in rmats:
-        AS = detectAXSS(rmats, gene_struct)
+        AS = count_AXSS(rmats, gene_struct)
     elif "MXE" in rmats:
-        AS = detectMXE(rmats, gene_struct)
+        AS = count_MXE(rmats, gene_struct)
     else:
         sys.exit("Error: check the name of input fromGTF_AS.txt file. It must contain the event type. \t", rmats)
 
@@ -560,13 +565,24 @@ def main():
     xgene_struct, xcount_gene_tx = parse_pro(args.fn_gtf, args.fn_pro)
 
     for idx in range(len(args.fn_rmats)):
-        xAS = detectAS(args.fn_rmats[idx], xgene_struct)
+        xAS = count_AS(args.fn_rmats[idx], xgene_struct)
         xAS_COUNT, xPSI = CalculatePSI(xAS, xcount_gene_tx)
 
         with open(args.fn_psi[idx], "w") as fo:
             fo.write("ID\tPSI\tcount\n")
             for key in xPSI:
-                fo.write(key + "\t" + str(xPSI[key]) + "\t" + str(xAS_COUNT[key]) + "\n")
+                fo.write(
+                    key
+                    + "\t"
+                    + str(xPSI[key])
+                    + "\t"
+                    + str(xAS_COUNT[key])
+                    + "\t"
+                    + xAS[key]["gene_id"]
+                    + "\t"
+                    + xAS[key]["gene_name"]
+                    + "\n"
+                )
 
 
 if __name__ == "__main__":
