@@ -47,20 +47,23 @@ flux-simulator -p XX.par
 #### Run each step seperately
 *This enable us to modify expression profile using real data*, instead of using simulated expression profile.
 
-1. generate expression profile by [expression.PAR](./paraFiles/expression.PAR)
+1. generate expression profile by [expression.PAR](./paraFiles/expression.PAR): generating [count_30M.PRO](./profiles/count_30M.PRO)
     ```
     flux-simulator -p XX.par -x
     ```
-2. Optional: modify expression profile (column 6).
-    Expression profile column 6 represent the number of initial molecules. It can be replaced by counts from real data, for example, from kallisto output `abundance.tsv` column 5 (tpm, normalized by transcript length). 
-3. generate library by [lib.PAR](./paraFiles/lib.PAR)
+2. Optional: modify expression profile (column 6) [count_modified.PRO](./profiles/count_modified.PRO). \
+    Expression profile column 6 represent the number of initial molecules. It can be replaced by counts from real data, for example, from kallisto output `abundance.tsv` column 5 (tpm, normalized by transcript length). \
+    my example: column 6 replaced by TPM_{kallisto}*50 from real data (293 T cell line)
+
+3. generate library by [lib.PAR](./paraFiles/lib.PAR): generating [count_modified.LIB](./libraries/count_modified.LIB)
     ```
     flux-simulator -p XX.par -l
     ```
-4. get sequences by [seq_50M.PAR](./paraFiles/seq_50M.PAR)
+4. get sequences by [seq_50M.PAR](./paraFiles/seq_50M.PAR): generating [50M.fastq](./fastq/50M.fastq)
     ```
     flux-simulator -p XX.par -s
     ```
+
 ### mapping
 ### run rmats
 ### calculate PSI from expression profile
