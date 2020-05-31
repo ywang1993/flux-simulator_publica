@@ -1,4 +1,4 @@
-# https://www.nature.com/articles/nbt.2862
+
 # Expression ###
 NB_MOLECULES 5000000
 REF_FILE_NAME GRCh37_annotations.gtf
@@ -28,3 +28,4 @@ PAIRED_END YES
 ERR_FILE 76
 FASTA YES
 UNIQUE_IDS NO
+
